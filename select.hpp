@@ -74,4 +74,22 @@ public:
     }
 };
 
+/* Select_And */
+class Select_And : public Select {
+protected:
+    Select* x;
+    Select* y;
+public:
+    Select_And(Select* a, Select* b) :x(a), y(b) {}
+    ~Select_And() { 
+        delete x; 
+        delete y; 
+    }
+    
+    virtual bool select(const Spreadsheet* sheet, int row) const 
+    {
+        return (x->select(sheet, row) && y->select(sheet, row));
+    }
+};
+
 #endif //__SELECT_HPP__
