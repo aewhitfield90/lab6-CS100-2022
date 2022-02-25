@@ -92,4 +92,22 @@ public:
     }
 };
 
+/* Select_Or */
+class Select_Or : public Select {
+protected:
+    Select* x;
+    Select* y;
+public:
+    Select_Or(Select* a, Select* b) :x(a), y(b) {}
+    ~Select_Or() {
+        delete x;
+        delete y;
+    }
+
+    virtual bool select(const Spreadsheet* sheet, int row) const
+    {
+        return (x->select(sheet, row) || y->select(sheet, row));
+    }
+};
+
 #endif //__SELECT_HPP__
