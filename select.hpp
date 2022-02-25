@@ -57,4 +57,21 @@ public:
     }
 };
 
+/* Select_Not */
+class Select_Not : public Select 
+{
+protected:
+    Select* s;
+public:
+    Select_Not(Select* input) :s(input) {}
+    ~Select_Not() { 
+        delete s; 
+    }
+
+    virtual bool select(const Spreadsheet* sheet, int row) const 
+    {
+        return !s->select(sheet, row);
+    }
+};
+
 #endif //__SELECT_HPP__
