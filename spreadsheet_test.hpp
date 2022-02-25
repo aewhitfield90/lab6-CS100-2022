@@ -88,5 +88,25 @@ TEST(Columns, DoubleColumns2) {
     EXPECT_EQ(test.str(), "1st 2nd test test \n");
 }
 
- 
+TEST(UserQuery, SelectNot) { //it returns the first column it finds with the matching title
+    Spreadsheet sheet;
+    std::stringstream test;
+    sheet.set_column_names({ "First","Last","Age","Major" });
+    sheet.add_row({ "Steve","Bobby","14","test" });
+    sheet.add_row({ "Joe","Smith","20","test" });
+    sheet.set_selection(new Select_Not(new Select_Contains(&sheet, "First", "eve")));
+    sheet.print_selection(test);
+    EXPECT_EQ(test.str(), "Joe Smith 20 test \n");
+}
+
+TEST(UserQuery, SelectNot2) { //it returns the first column it finds with the matching title
+    Spreadsheet sheet;
+    std::stringstream test;
+    sheet.set_column_names({ "First","Last","Age","Major" });
+    sheet.add_row({ "Steve","Bobby","14","test" });
+    sheet.add_row({ "Joe","Smith","20","test" });
+    sheet.set_selection(new Select_Not(new Select_Contains(&sheet, "Last", "mi")));
+    sheet.print_selection(test);
+    EXPECT_EQ(test.str(), "Steve Bobby 14 test \n");
+} 
     #endif //__SPREADSHEET_TEST_HPP__
