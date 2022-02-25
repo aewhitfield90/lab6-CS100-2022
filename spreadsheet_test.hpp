@@ -88,7 +88,7 @@ TEST(Columns, DoubleColumns2) {
     EXPECT_EQ(test.str(), "1st 2nd test test \n");
 }
 
-TEST(UserQuery, SelectNot) { //it returns the first column it finds with the matching title
+TEST(UserQuery, SelectNot) {
     Spreadsheet sheet;
     std::stringstream test;
     sheet.set_column_names({ "First","Last","Age","Major" });
@@ -99,7 +99,7 @@ TEST(UserQuery, SelectNot) { //it returns the first column it finds with the mat
     EXPECT_EQ(test.str(), "Joe Smith 20 test \n");
 }
 
-TEST(UserQuery, SelectNot2) { //it returns the first column it finds with the matching title
+TEST(UserQuery, SelectNot2) { 
     Spreadsheet sheet;
     std::stringstream test;
     sheet.set_column_names({ "First","Last","Age","Major" });
