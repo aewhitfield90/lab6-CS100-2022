@@ -1,6 +1,8 @@
 #ifndef __SELECT_HPP__
 #define __SELECT_HPP__
 
+#include "spreadsheet.hpp"
+
 #include <cstring>
 
 class Select
